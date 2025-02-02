@@ -13,3 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+form > a{
+  margin-left: 1rem;
+}
