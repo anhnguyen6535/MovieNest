@@ -66,6 +66,6 @@ export default function ImageField({
 
 interface imageFieldProps{
     displayName: string;
-    imageURL: string;
+    imageURL?: string;
     field: string;
 }

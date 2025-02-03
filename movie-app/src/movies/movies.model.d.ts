@@ -9,3 +9,14 @@ export interface landingPageDTO{
     inTheaters?: movieDTO[];
     upcomings?: movieDTO[];
 }
+
+export interface movieCreationDTO{
+    title: string;
+    inTheaters: boolean;
+    trailer: string;
+    releaseDate?: Date;
+    poster?: File;
+    posterURL?: string;
+    genresIds?: number[];
+    movieTheatersIds?: number[];
+}
