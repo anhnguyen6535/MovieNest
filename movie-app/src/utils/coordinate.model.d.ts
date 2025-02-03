@@ -1,4 +1,4 @@
 export default interface coordinateDTO{
-    lgn: number;
+    lng: number;
     lat: number;
 }

@@ -16,8 +16,10 @@ L.Marker.prototype.options.icon = defaultIcon;
 
 export default function Map({
     height = '500px',
+    coordinates: initialCoordinates,
+    handleMapClick,
 }: mapProps) {
-    const [coordinates, setCoordinates] = useState<coordinateDTO[]>([]);
+    const [newCoordinates, setCoordinates] = useState<coordinateDTO[]>(initialCoordinates);
 
     return (
         <MapContainer
@@ -26,19 +28,22 @@ export default function Map({
             <TileLayer attribution="React Movies" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
             <MapClick setCoordinates={coordinates =>{
                 setCoordinates([coordinates]);
+                handleMapClick(coordinates)
             }} />
-            {coordinates.map((coordinate, index) => <Marker key={index} position={[coordinate.lat, coordinate.lgn]} />)}
+            {newCoordinates.map((coordinate, index) => <Marker key={index} position={[coordinate.lat, coordinate.lng]} />)}
         </MapContainer>
     )
 }
 
 interface mapProps{
     height?: string;
+    coordinates: coordinateDTO[];
+    handleMapClick(coordinates: coordinateDTO): void;
 }
 
 function MapClick(props: mapClickProps){
     useMapEvent('click', eventArgs =>{
-        props.setCoordinates({lat: eventArgs.latlng.lat, lgn: eventArgs.latlng.lng})
+        props.setCoordinates({lat: eventArgs.latlng.lat, lng: eventArgs.latlng.lng})
     })
     return null;
 }
