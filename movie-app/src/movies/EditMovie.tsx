@@ -1,3 +1,4 @@
+import { actorMovieDTO } from "../actors/actor.model";
 import { genreDTO } from "../genres/genres.model";
 import MovieForm from "./MovieForm";
 
@@ -6,6 +7,9 @@ export default function EditMovie() {
     const selectedGenres: genreDTO[] = [{id: 1, name: 'Comedy'}]
     const selectedMovieTheaters: movieTheaterDTO[] = [{id: 2, name: 'Creson Height Cineplex'}]
     const nonSelectedMovieTheaters: movieTheaterDTO[] = [{id: 1, name: 'University Cineplex'}]
+    const selectedActors: actorMovieDTO[] = [
+        {id: 1, name: 'Cynthia Erivo', character: 'Elphaba Thropp', picture: 'https://imageio.forbes.com/specials-images/imageserve/6734b1a4929e3fc9aa0adbd7/Cynthia-Erivo-plays-Elphaba-in-Wicked/960x0.jpg?format=jpg&width=960'},
+    ]
     return<>
         <h3>Edit Movie</h3>
         <MovieForm 
@@ -14,7 +18,8 @@ export default function EditMovie() {
             nonSelectedGenres={nonSelectedGenres} 
             selectedGenres={selectedGenres}    
             nonSelectedMovieTheaters={nonSelectedMovieTheaters} 
-            selectedMovieTheaters={selectedMovieTheaters}    
+            selectedMovieTheaters={selectedMovieTheaters}   
+            selectedActors={selectedActors} 
         />
     </>
 }
