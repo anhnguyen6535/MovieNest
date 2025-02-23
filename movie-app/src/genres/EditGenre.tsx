@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import RedirectToLandingPage from "../utils/RedirectToLandingPage";
+import GenreForm from "./GenreForm";
 
 export default function EditGenre() {
     const {id}: any = useParams();
@@ -12,7 +13,15 @@ export default function EditGenre() {
     return(
         <>
             <h3>Edit genre</h3>
-            The id is {id}
+            <GenreForm model={{name: 'Action'}}
+                onSubmit={
+                    async value =>{
+                        await new Promise(r => setTimeout(r, 1));
+                        console.log(id);
+                        console.log(value);
+                    }
+                }
+            />
         </>
     )
 }
